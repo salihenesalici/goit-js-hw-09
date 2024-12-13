@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #1e1e1e;
+    overflow: hidden;
+    display: flex;
+    /* Flexbox kullanımı */
+    justify-content: center;
+    /* Yatayda ortala */
+    align-items: center;
+    /* Dikeyde ortala */
+    position: relative;
+}
+
+@keyframes fallingSnow {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: fallingSnow 5s infinite linear, colorChange 3s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% {
+        background-color: #ff69b4;
+    }
+
+    25% {
+        background-color: #00ffff;
+    }
+
+    50% {
+        background-color: #32cd32;
+    }
+
+    75% {
+        background-color: #ff6347;
+    }
+
+    100% {
+        background-color: #ffff00;
+    }
+}
+
+.dot:nth-child(odd) {
+    animation-duration: 7s;
+    animation-delay: -2s;
+}
+
+.dot:nth-child(even) {
+    animation-duration: 6s;
+    animation-delay: -1s;
+}
+
+.go-back-btn {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 140, 186, 0.3);
+}
+
+.go-back-btn a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.go-back-btn:hover {
+    background-color: #005f7f;
+    box-shadow: 0 15px 30px rgba(0, 140, 186, 0.5);
+    transform: translateY(-5px);
+}
+
+.go-back-btn:active {
+    transform: translateY(2px);
+}
+
+.feedback-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 105, 180, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-sizing: border-box;
+}
+
+.feedback-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 105, 180, 0.3);
+}
+
+/* Form Ayarları */
+.feedback-form {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    gap: 20px;
+    /* Öğeler arasında boşluk */
+    width: 360px;
+    transition: transform 0.3s ease;
+}
+
+.feedback-form:hover {
+    transform: scale(1.02);
+}
+
+/* Etiket ve Girdi Ayarları */
+.label {
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.feedback-form input[type="email"],
+.feedback-form textarea {
+    width: 280px;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    color: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.feedback-form input[type="email"]:focus,
+.feedback-form textarea:focus {
+    border-color: #ff69b4;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.4);
+}
+
+/* Metin Alanı Boyutu */
+.feedback-form textarea {
+    resize: none;
+    height: 120px;
+    /* Metin alanı sabit boyut */
+}
+
+/* Buton Ayarları */
+.feedback-form button {
+    width: 280px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ff69b4, #ff1493);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-form button:hover {
+    background: linear-gradient(135deg, #ff85c5, #ff1493);
+    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.feedback-form button:active {
+    transform: translateY(2px);
+    box-shadow: none;
+}
